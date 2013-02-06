@@ -1,0 +1,11 @@
+env
+*.*~
+*.pyc
+\#*
+\.#*
+media
+.sql
+.sqlite
+.log
+.db
+db/
