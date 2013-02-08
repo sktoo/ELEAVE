@@ -26,6 +26,10 @@ class leaveCRUDL(SmartCRUDL):
     class List(SmartListView):
         fields =('requestor','typeLeave','dateLeave','dateReturn','status','comment')
 
+	def derive_queryset(self,**kwargs):
+		queryset=super(leaveCRUDL.List,self).derive_queryset(**kwargs)
+		return queryset.filter(requestor=self.request.user)#to work on 2morro
+
     class Create(SmartCreateView):
         fields= ('typeLeave','dateLeave','dateReturn','comment')
 	form_class = LeaveForm

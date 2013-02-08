@@ -25,11 +25,11 @@
   </ul>
             
   <ul class="nav pull-right">
-    User: {{ request.user }} 
+    <!--User: {{ request.user }} -->
     {% block login %}
     {% if request.user and request.user.is_authenticated %}
     <li class="pull-right">
-      <a href="{% url users.user_profile request.user.id %}" style="float: left;">{{ request.user.username }}</a>
+      <a href="{% url users.user_profile request.user.id %}" style="float: left;"> welcome {{ request.user.username }}</a>
       <a href="{% url users.user_logout %}?go=/" style="float: right;">logout</a>
     </li>
     {% else %}

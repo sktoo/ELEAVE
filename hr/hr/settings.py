@@ -91,6 +91,20 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
 )
+#-------------------------------------------------------------------
+#template_context_proccessor here below
+#-------------------------------------------------------------------
+TEMPLATE_CONTEXT_PROCESSORS = (
+   'django.contrib.auth.context_processors.auth',
+   'django.core.context_processors.debug',
+   'django.core.context_processors.i18n',
+   'django.core.context_processors.media',
+   'django.core.context_processors.static',
+   'django.contrib.messages.context_processors.messages',
+   'django.core.context_processors.request',
+   #'sekizai.context_processors.sekizai',
+)
+#-----------------------------------------------------------------------------------------------------
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
@@ -157,7 +171,8 @@ GROUP_PERMISSIONS ={
     "Administrator":('auth.user.*',
                      'blog.post.*',
                      'employees.employees.*',
-                     'Departments.Departments.*'),
+                     'Departments.Departments.*',
+                     'leave.leave.*'),
     
 
     "Editor":('blog.post_list',
@@ -203,6 +218,9 @@ INSTALLED_APPS = (
     'employees',
     'public',
     'Departments',
+    
+    #necessary apps
+    #'sekizai',
 
     #smartmin user app
 

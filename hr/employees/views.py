@@ -29,6 +29,7 @@ class employeesCRUDL(SmartCRUDL):
 
     class List(SmartListView):
         fields=('lastName','firstName','gender','email','cv','dateJoined','department')
+
     class Create(SmartCreateView):    
         fields=('lastName','firstName','gender','email','cv','dateJoined','department')
         form_class = EmployeesForm
