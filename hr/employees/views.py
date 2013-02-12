@@ -27,8 +27,19 @@ class employeesCRUDL(SmartCRUDL):
     actions=('create','update','list')
     permissions=True
 
+
+    class MyProfile(SmartUpdateView):
+        fields=('firstName','lastName','email')
+        def has_permission(self,request,*args,**kwargs):
+            super(employeesCRUDL.MyProfile).has_permission(request,*args,**kwargs)
+            return True
+
     class List(SmartListView):
         fields=('lastName','firstName','gender','email','cv','dateJoined','department')
+
+        
+        
+
 
     class Create(SmartCreateView):    
         fields=('lastName','firstName','gender','email','cv','dateJoined','department')
@@ -46,7 +57,9 @@ class employeesCRUDL(SmartCRUDL):
             user.first_name=obj.firstName
             user.last_name=obj.lastName
             user.email= obj.email
-            user.set_unusable_password()
+            #user.set_password(obj.lastName)
+            #user.set_unusable_password()
+            user.set_password(obj.lastName)
             #2mail_admins("Important  notification"," A new  employee has been added into your Company")
             mail_admins("Important  notification"," A new  employee has been added into your Company : %s %s " %(obj.firstName,obj.lastName))
             #send_mail(" leave notification","you leave apiilication has been sent : %s %s %s" %(obj.firstName,obj.lastName,obj.email),'habirobert@gmail.com',['obj.email'])
@@ -63,6 +76,9 @@ class employeesCRUDL(SmartCRUDL):
         #def save(self,*args,**kwargs):
             #if self.lastName!="robert":
                 #super(employees,self).save(*args,**kwargs)
+
+
+        
                 
                 
                 
